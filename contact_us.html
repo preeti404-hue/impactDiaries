@@ -1,0 +1,790 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="shortcut icon" type="image/x-icon" href="/images/favi.webp" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact Us</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"> -->
+  <link rel="stylesheet" href="./contact_us.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+    integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="Scroll_and_progressbar.css" />
+  <style>
+    /* Custom popup styles */
+    .send-btn {
+      transition: background-color 0.3s ease;
+    }
+
+    .send-btn:hover {
+      background-color: #3498db;
+      /* Darker shade on hover */
+    }
+
+    .popup {
+      display: none;
+      position: fixed;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      width: 300px;
+      background-color: #fff;
+      border: 2px solid #ea5541;
+      padding: 20px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      z-index: 1000;
+      border-radius: 5px;
+    }
+
+    .popup h3 {
+      color: #ea5541;
+      font-size: 18px;
+      margin: 0;
+    }
+
+    .popup p {
+      color: #333;
+      font-size: 14px;
+      margin: 10px 0;
+    }
+
+    .popup button {
+      background-color: #ea5541;
+      color: #fff;
+      border: none;
+      padding: 8px 16px;
+      cursor: pointer;
+      border-radius: 4px;
+      float: right;
+    }
+
+    .overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      z-index: 999;
+    }
+  </style>
+  <!-- Script for Navbar Toggle -->
+  <script>
+    function toggleMenu() {
+      const menu = document.getElementById("nav-menu");
+      menu.classList.toggle("active");
+    }
+  </script>
+</head>
+
+<body>
+ <nav1>
+  <div class="progress-container">
+    <div class="progress-bar" id="progress-bar"></div>
+  </div>
+  <div class="layout-container" style="margin-bottom: 4rem;">
+
+    <header>
+
+
+
+      <div class="logo">
+        <a href="index.html">
+          <h2>Impact Diaries</h2>
+        </a>
+      </div>
+      <div class="hamburger" id="hamburger" onclick="toggleHamburgerMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <div class= "nav-links1" id="navLinks">
+        <a href= "index.html">Home</a>
+        <a href= "blog.html">Leading Blog</a>
+        <a href= "start_writing.html">Start Writing</a>
+        <a href= "category.html">Categories</a>
+
+        <a href= "contact_us.html">Contact Us</a>
+        <a href= "give_feedback.html">Give Feedback</a>
+      </div>
+
+
+      
+      <div class="dropdown">
+        <!-- Profile Icon -->
+
+        <a href="javascript:void(0);" class="profile-link profile-icon" style="display: flex; align-items: center; text-decoration: none;" onclick="toggleMenu()">
+            <i class="fas fa-user-circle"></i>
+
+        </a>
+
+        <!-- Dropdown Menu -->
+        <ul class="dropdown-menu" id="profileMenu" style="display: none; position: absolute; z-index: 1;">
+          
+            <li><a href="#login" onclick="openForm('login')">Login</a></li>
+            <li><a href="#signup" onclick="openForm('signup')">Signup</a></li>
+        </ul>
+    </div>
+    <script>
+      function toggleMenu() {
+          const menu = document.getElementById('profileMenu');
+          menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
+      }
+  
+      // Close the dropdown if the user clicks outside of it
+      window.onclick = function(event) {
+          const menu = document.getElementById('profileMenu');
+          if (!event.target.matches('.profile-link img') && menu.style.display === 'block') {
+              menu.style.display = 'none';
+          }
+      }
+  </script>
+  
+   
+  
+      
+                <!-- Login Form -->
+                <div class="form-popup" id="loginForm">
+                  <form class="form-container" onsubmit="return validateLoginForm()" style="max-width: 400px; margin: auto;">
+                      <span class="close-icon" onclick="closeForm('login')">&times;</span>
+                      <h2 class="text-center">Login</h2>
+                      <div class="form-group">
+                          <label for="loginEmail"><b>Email</b></label>
+                          <input type="email" class="form-control" id="loginEmail" placeholder="Enter Email" name="email" required>
+                      </div>
+                      <div class="form-group position-relative">
+                          <label for="loginPsw"><b>Password</b></label>
+                          <input type="password" class="form-control" id="loginPsw" placeholder="Enter Password" name="psw" required minlength="6">
+                          <i class="bi bi-eye eye-icon" id="toggleLoginPassword" onclick="togglePasswordVisibility('loginPsw', 'toggleLoginPassword')"></i>
+                      </div>
+                      <div class="remember-me">
+                          <input type="checkbox" id="remember-me" />
+                          <label for="remember-me">Remember Me</label>
+                      </div>
+                      <div class="forgot">
+                          <a href="javascript:void(0);" onclick="openForgotPassword()">Forgot Password?</a>
+                      </div>
+                      <button type="submit" class="btn btn-secondary w-100 mb-3">LOGIN</button>
+                      <style>
+                          .btn:hover {
+                              transition: 0.5s ease;
+                          }
+                      </style>
+                      <!-- Google Login Button -->
+                      <button type="button" class="btn google-btn" onclick="window.location.href='https://accounts.google.com/v3/signin/identifier?authuser=0&continue=https%3A%2F%2Fmyaccount.google.com%2F&ec=GAlAwAE&hl=en_GB&service=accountsettings&flowName=GlifWebSignIn&flowEntry=AddSession&dsh=S1527110508%3A1729760212648495&ddm=0'">
+                          <img src="./assets/google_icon.webp" alt="Google Logo" class="google-logo">
+                          Sign in with Google</button>
+                      <button type="button" class="btn btn-secondary w-100" onclick="closeForm('login')">CLOSE</button>
+                      <!-- Link to Signup Page -->
+                      <div class="new">
+                          <p>Don't have an account? <a href="javascript:void(0);" onclick="openForm('signup')">Sign up
+                                  here</a></p>
+                      </div>
+                  </form>
+              </div>
+
+              <!-- Signup Form -->
+              <div class="form-popup" id="signupForm">
+                  <form class="form-container" onsubmit="return validateSignupForm()" style="max-width: 400px; margin: auto;">
+                      <span class="close-icon" onclick="closeForm('signup')">&times;</span>
+                      <h2 class="text-center">Signup</h2>
+                      <div class="form-group">
+                          <label for="name"><b>Full Name</b></label>
+                          <input type="text" class="form-control" id="name" placeholder="Enter Full Name" name="name" required>
+                      </div>
+                      <div class="form-group">
+                          <label for="signupEmail"><b>Email</b></label>
+                          <input type="email" class="form-control" id="signupEmail" placeholder="Enter Email" name="email" required>
+                      </div>
+                      <div class="form-group position-relative">
+                          <label for="signupPsw"><b>Password</b></label>
+                          <input type="password" class="form-control" id="signupPsw" placeholder="Enter Password" name="psw" required minlength="6">
+                          <i class="bi bi-eye eye-icon" id="toggleSignupPassword" onclick="togglePasswordVisibility('signupPsw', 'toggleSignupPassword')"></i>
+                      </div>
+                      <div class="form-group position-relative">
+                          <label for="confirmPsw"><b>Confirm Password</b></label>
+                          <input type="password" class="form-control" id="confirmPsw" placeholder="Confirm Password" name="confirmPsw" required minlength="6">
+                          <i class="bi bi-eye eye-icon" id="toggleConfirmPassword" onclick="togglePasswordVisibility('confirmPsw', 'toggleConfirmPassword')"></i>
+                      </div>
+                      <div class="remember-me">
+                          <input type="checkbox" id="remember-me" />
+                          <label for="remember-me">Remember Me</label>
+                      </div>
+                      <button type="submit" class="btn btn-primary w-100 mb-3">SIGNUP</button>
+                      <!-- Google Sign-In Button -->
+                      <button type="button" class="btn google-btn" onclick="window.location.href='https://accounts.google.com/v3/signin/identifier?authuser=0&continue=https%3A%2F%2Fmyaccount.google.com%2F&ec=GAlAwAE&hl=en_GB&service=accountsettings&flowName=GlifWebSignIn&flowEntry=AddSession&dsh=S1527110508%3A1729760212648495&ddm=0'">
+                          <img src="./assets/google_icon.webp" alt="Google Logo" class="google-logo">
+                          Sign in with Google</button>
+                      <button type="button" class="btn btn-secondary w-100" onclick="closeForm('signup')">CLOSE</button>
+                      <!-- Link to Login Page -->
+                      <div class="new">
+                          <p>Already have an account? <a href="javascript:void(0);" onclick="openForm('login')">Login
+                                  here</a></p>
+                      </div>
+                  </form>
+              </div>
+
+              <!-- Forgot Password Modal -->
+              <div id="forgot-password-modal" class="modal">
+                  <div class="form-container modal-content">
+                      <h2>Forgot Password</h2>
+                      <p>Please enter your email address to reset your password.</p>
+
+                      <label for="email">Email Address</label>
+                      <input type="email" id="email" placeholder="Enter your email" required />
+
+                      <button class="btn" onclick="submitForgotPassword()">Submit</button>
+                      <button class="btn cancel" onclick="closeForgotPasswordModal()">Cancel</button>
+                  </div>
+              </div>
+
+              <!-- Toggle Password Visibility Script -->
+              <script>
+                  function togglePasswordVisibility(passwordFieldId, iconId) {
+                      const passwordField = document.getElementById(passwordFieldId);
+                      const togglePassword = document.getElementById(iconId);
+                      if (passwordField.type === 'password') {
+                          passwordField.type = 'text';
+                          togglePassword.classList.remove('bi-eye');
+                          togglePassword.classList.add('bi-eye-slash');
+                      } else {
+                          passwordField.type = 'password';
+                          togglePassword.classList.remove('bi-eye-slash');
+                          togglePassword.classList.add('bi-eye');
+                      }
+                  }
+              </script>
+              <script>
+                  document.addEventListener("DOMContentLoaded", function () {
+                      const rememberMeCheckbox = document.getElementById("remember-me");
+                      const usernameInput = document.getElementById("username");
+
+                      // Load saved username if it exists
+                      if (localStorage.getItem("rememberedUsername")) {
+                          usernameInput.value = localStorage.getItem("rememberedUsername");
+                          rememberMeCheckbox.checked = true;
+                      }
+
+                      // When the form is submitted, save the username if "Remember Me" is checked
+                      document.querySelector(".sign-in-form").addEventListener("submit", function (e) {
+                          e.preventDefault(); // Prevent default form submission
+
+                          if (rememberMeCheckbox.checked) {
+                              localStorage.setItem("rememberedUsername", usernameInput.value);
+                          } else {
+                              localStorage.removeItem("rememberedUsername");
+                          }
+
+                          // Add form submission logic here
+                      });
+                  });
+              </script>
+
+
+  <!-- CSS Styles -->
+  
+                <!-- Styles -->
+                <style>
+                  .form-popup {
+                      .form-popup {
+                          display: none;
+                          /* Hidden by default */
+                          position: fixed;
+                          /* Stay in place */
+                          z-index: 9;
+                          /* Sit on top */
+                          left: 50%;
+                          top: 50%;
+                          transform: translate(-50%, -50%);
+                          /* Center the popup */
+                          width: 100%;
+                          max-width: 500px;
+                          /* Limit width */
+                          padding: 20px;
+                          background-color: white;
+                          box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.6);
+                          border-radius: 10px;
+                          box-sizing: border-box;
+                      }
+                  }
+                  
+                  .form-container h2 {
+                      margin-bottom: 20px;
+                      color: #333;
+                  }
+                  
+                  .form-group {
+                      margin-bottom: 15px;
+                  }
+                  
+                  .form-control {
+                      border-radius: 5px;
+                      padding: 10px;
+                      box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.1);
+                  }
+                  
+                  .btn {
+                      margin-top: 10px;
+                      border-radius: 5px;
+                  }
+                  
+                  .eye-icon {
+                      position: absolute;
+                      right: 15px;
+                      top: 38px;
+                      cursor: pointer;
+                      color: #007bff;
+                  }
+                  
+                  .close-icon {
+                      font-size: 24px;
+                      cursor: pointer;
+                      float: right;
+                  }
+                  
+                  .position-relative {
+                      position: relative;
+                  }
+                  
+                  .btn-primary:hover {
+                      background-color: #0056b3;
+                  }
+                  
+                  .btn-secondary:hover {
+                      background-color: #6c757d;
+                  }
+                  
+                  .scroll-to-top {
+                      background-color: #0066cc;
+                      /* Button color */
+                      color: white;
+                      /* Text color */
+                      border: none;
+                      /* No border */
+                      border-radius: 5px;
+                      /* Rounded corners */
+                      padding: 10px 15px;
+                      /* Padding for better appearance */
+                      cursor: pointer;
+                      /* Pointer cursor on hover */
+                      margin-top: 10px;
+                      /* Space between the paragraph and button */
+                  }
+                  
+                  .scroll-to-top:hover {
+                      background-color: #005bb5;
+                      /* Darker shade on hover */
+                  }
+              </style>
+
+  
+  
+        <script src="signup.js"></script>
+        <!-- Link to your JavaScript file -->
+  
+        <div class="theme-switch-wrapper">
+          <label class="theme-switch" for="checkbox">
+            <input type="checkbox" id="checkbox" />
+            <div class="slider">
+              <img src="https://img.icons8.com/emoji/48/000000/sun-emoji.png" alt="Sun" class="icon sun-icon" />
+              <img src="https://img.icons8.com/emoji/48/000000/crescent-moon-emoji.png" alt="Moon"
+                class="icon moon-icon" />
+            </div>
+          </label>
+          <span id="mode-label"></span>
+  
+        </div>
+      </header>
+    </div>
+ </nav1>
+
+  <div class="container" style="
+    display: flex;
+    flex-direction: row;
+    height: auto;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 900px;
+    margin: 50px auto;
+    padding: 50px;
+    background-color: var(--background-color);
+    border-radius: 10px;
+    color: var(--text-color);
+    margin-top: 100px;
+    border: 1px solid var(--text-color);
+    flex-wrap: wrap;
+    box-shadow: 0px 3px 6px #fca5a5;
+    text-align: center;
+">
+  
+  <!-- Left Section with Typography -->
+  <div class="left-section" style="
+      flex: 1; 
+      padding-right: 50px;
+      width: 100%;
+      height: auto;
+      align-self: baseline;
+      margin-bottom: 20px;
+      text-align: center;
+  ">
+    <h1 class="fade-in" style="font-size: 48px; margin-bottom: 20px; color: var(--text-color);">Get in Touch</h1>
+    <p class="fade-in" style="font-size: 18px; color: var(--text-color);">
+      We are here for you. Let us know how we can assist you.
+    </p>
+    <div class="tags social" id="contact">
+      <div class="d-flex flex-wrap">
+        <a href="https://www.facebook.com/" id="facebook" class="nav-link btn bg-light circle-icon"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://x.com/" id="twitter" class="nav-link btn bg-light circle-icon"><i class="fa-brands fa-x-twitter"></i></a>
+        <a href="https://www.instagram.com/" id="instagram" class="nav-link btn bg-light circle-icon"><i class="fab fa-instagram"></i></a>
+        <a href="https://dribbble.com/" id="dribbble" class="nav-link btn bg-light circle-icon"><i class="fab fa-dribbble"></i></a>
+        <a href="https://github.com/ANSHIKA-26?tab=overview&from=2022-12-01&to=2022-12-31" id="github" target="_blank" class="nav-link btn bg-light circle-icon"><i class="fa-brands fa-github"></i></a>
+      </div>
+    </div>
+</div>
+
+
+
+  <!-- Right Section with Form -->
+  <div class="right-section" style="flex: 1;">
+    <form id="contactForm">
+      <div class="form-group" style="margin-bottom: 20px;" >
+        <i class="fas fa-user" style="position: relative; top: 1.6rem; left: -11rem;"></i>
+        <input type="text" id="Name" placeholder="Name" name="Name" required style="
+          width: 100%;
+          padding: 10px 0;
+          font-size: 16px;
+          background-color: var(--background-color);
+          color: var(--text-color);
+          border-radius: 0px;
+          border: none;
+          border-bottom: 2px solid var(--text-color);
+          outline: none;
+          padding-left: 25px;   
+        " />
+      </div>
+
+      <div class="form-group" style="margin-bottom: 20px">
+        <i class="fas fa-envelope" style="position: relative; top: 1.7rem; left: -11rem;"></i>
+        <input type="email" id="email2" placeholder="Email Address" name="email" required style="
+          width: 100%;
+          padding: 10px 0;
+          font-size: 16px;
+          background-color: var(--background-color);
+          color: var(--text-color);
+          border-radius: 0px;
+          border: none;
+          border-bottom: 2px solid var(--text-color);
+          outline: none;
+          padding-left: 25px;
+        " />
+      </div>
+
+      <div class="form-group" style="margin-bottom: 20px">
+        <i class="fas fa-phone" style="position: relative; top: 1.6rem; left: -11rem;"></i>
+        <input type="number" id="phone" placeholder="Phone Number" name="phone" required style="
+          width: 100%;
+          padding: 10px 0;
+          font-size: 16px;
+          background-color: var(--background-color);
+          color: var(--text-color);
+          border-radius: 0px;
+          border: none;
+          border-bottom: 2px solid var(--text-color);
+          outline: none;
+          padding-left: 25px;
+        " />
+
+        <span id="error-message" style="color: red; display: none;">Please enter up to 10 digits.</span>
+      </div>
+      
+      <div class="form-group" style="margin-bottom: 20px">
+        <i class="fas fa-message" style="position: relative; top: 1.6rem; left: -11rem;"></i>
+        <textarea id="message" name="message" placeholder="Message" required style="
+          width: 100%;
+          padding: 10px 0;
+          font-size: 16px;
+          background-color: var(--background-color);
+          color: var(--text-color);
+          border-radius: 0px;
+          border: none;
+          border-bottom: 2px solid var(--text-color);
+          outline: none;
+          padding-left: 25px;"></textarea>
+     
+      </div>
+
+      <button type="button" onclick="SendEmail(event)" class="submitbtn">
+        Send
+    </button>
+    
+  
+    
+  </div>
+</div>
+
+
+<!-- Add this media query for responsiveness -->
+<style>
+  @media (max-width: 1200px) {
+    .contact-container {
+      flex-direction: column; /* Stack the sections vertically */
+      padding: 20px;
+    }
+
+    .left-section {
+      padding-right: 0; /* Remove padding */
+      text-align: center; /* Center-align text for better display on mobile */
+      margin-bottom: 30px; /* Add spacing between sections */
+    }
+
+    .right-section {
+      width: 100%;
+    }
+
+    .form-group input, .form-group textarea {
+      font-size: 14px; /* Adjust font size for smaller screens */
+    }
+  }
+</style>
+
+</form>
+<div id="backToTop" title="Back to Top">
+  <i class="fas fa-arrow-up"></i>
+</div>
+
+<!-- footer -->
+<footer id="footer">
+  <div class="footer-container">
+      <div class="row mb-3 col-3-main">
+          <div class="col-3">
+              <div id="about-us">
+                  <h2 class="footer-title secondary-title">About Us</h2>
+                  <div class="secondary-title text-secondary">
+                      <p class="mt-2 text-lg" style="text-align: left;">
+                          We are a close-knit team of passionate storytellers dedicated to sharing captivating
+                          content with the world.
+                      </p>
+                      <address class="mt-2">
+                          <i class="fas fa-map-marker-alt text-primary"></i>
+                          Chitkara University, Himachal Pradesh
+                      </address>
+                      <div class="phone mt-2">
+                          <i class="fas fa-mobile text-primary"></i>
+                          +91-8950491196
+                      </div>
+                      <div class="email mt-2">
+                          <a href="mailto:preeti1390.be23@chitkarauniversity.edu.in" style="color: #3B3B58;">
+                              <i class="fas fa-envelope text-primary"></i>
+                              <span>preeti1390.be23@chitkarauniversity.edu.in</span>
+                          </a>
+                      </div>
+                      <div>
+                          <a href="privacy.html" style="color: #520be1e7;">Privacy Policy</a>
+                      </div>
+                      <div>
+                          <img
+                              src="https://hits.sh/anshika-26.github.io/WordWise.svg?label=Website%20Views&extraCount=1515&color=30322f&labelColor=F5B3B5"
+                              alt="Web views" style="height: 20px;width: 150px;margin-top: 10px;">
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <div class="col-3">
+              <h2 class="footer-title secondary-title">Featured Post</h2>
+              <div class="feature-post">
+                  <div class="flex-item">
+                      <article class="article">
+                          <div class="d-flex" style="align-items: flex-start;">
+                              <a class="d-flex" href="#">
+                                  <img src="./assets/img9.webp" class="object-fit" alt="">
+                                  <div class="px-1" style="width: 300px;">
+                                      <a href="#" class="text-title display-2 text-dark">
+                                          Embrace the beauty of nature through our enchanting blog, where we
+                                          celebrate the wonders of the natural world
+                                      </a>
+                                      <p class="secondary-title text-secondary"
+                                         style="margin-top:3px;margin-left:0px; text-align: left;">
+                                          <span><i class="far fa-clock text-primary"></i> Wed 02, 2022 </span>
+                                      </p>
+                                  </div>
+                              </a>
+                          </div>
+                      </article>
+                  </div>
+                  <div class="flex-item">
+                      <article class="article">
+                          <div class="d-flex" style="align-items: flex-start;">
+                              <a class="d-flex" href="#">
+                                  <img src="./assets/img1.webp" class="object-fit" alt="">
+                                  <div class="px-1" style="width: 300px;">
+                                      <a href="#" class="text-title display-2 text-dark">
+                                          Embark on unforgettable journeys through our travel blog, where
+                                          wanderlust meets inspiration
+                                      </a>
+                                      <p class="secondary-title text-secondary display-3"
+                                         style="margin-top:3px;margin-left:0px; text-align: left;">
+                                          <span><i class="far fa-clock text-primary"></i> Thu 02,2025 </span>
+                                      </p>
+                                  </div>
+                              </a>
+                          </div>
+                      </article>
+                  </div>
+                  <div class="flex-item">
+                      <article class="article">
+                          <div class="d-flex" style="align-items: flex-start;">
+                              <a class="d-flex" href="#">
+                                  <img src="./assets/img2.webp" class="object-fit" alt="">
+                                  <div class="px-1" style="width: 300px;">
+                                      <a href="#" class="text-title display-2 text-dark">
+                                          Gaming Adventures Unleashed
+                                      </a>
+                                      <p class="secondary-title text-secondary display-3"
+                                         style="margin-top:3px;margin-left:0px; text-align: left;">
+                                          <span><i class="far fa-clock text-primary"></i> Wed 02, 2021 </span>
+                                      </p>
+                                  </div>
+                              </a>
+                          </div>
+                      </article>
+                  </div>
+              </div>
+          </div>
+          <div class="col-3">
+              <h2 class="footer-title secondary-title">Popular Tags</h2>
+              <div class="tags">
+                <div class="d-flex-gap flex-wrap all-tags">
+                  <a href="./blog.html" class="nav-link btn category-btn">Travel</a>
+                  <a href="./blog.html" class="nav-link btn category-btn">Food</a>
+                  <a href="./blog.html" class="nav-link btn category-btn">Lifestyle</a>
+                  <a href="./blog.html" class="nav-link btn category-btn">Technology</a>
+                  <a href="./blog.html" class="nav-link btn category-btn">Fashion</a>
+              </div>
+              
+              </div>
+              <h2 class="footer-title secondary-title mt-5">Connect with us</h2>
+              <div class="tags social" id="contact">
+                  <div class="d-flex-gap flex-wrap">
+                      <a href="https://www.facebook.com/" id="facebook" class="nav-link btn bg-light">
+                          <i class="fab fa-facebook-f"></i>
+                      </a>
+                      <a href="https://x.com/" id="twitter" class="nav-link btn bg-light">
+                          <i class="fa-brands fa-x-twitter"></i>
+                      </a>
+                      <a href="https://www.instagram.com/" id="instagram" class="nav-link btn bg-light">
+                          <i class="fab fa-instagram"></i>
+                      </a>
+                      <a href="https://dribbble.com/" id="dribbble" class="nav-link btn bg-light">
+                          <i class="fab fa-dribbble"></i>
+                      </a>
+                      <a href="https://github.com/ANSHIKA-26?tab=overview&from=2022-12-01&to=2022-12-31" id="github" target="_blank"
+                         class="nav-link btn bg-light">
+                          <i class="fab fa-github"></i>
+                      </a>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+  <!-- the authentication copyright -->
+  <div class="wordwise-footer">
+      <div class="wordwise-footer-content">
+          <p>
+              &copy; <span id="current-year"></span> Impact Diaries. All rights
+              reserved.
+          </p>
+      </div>
+  </div>
+</footer>
+<!-- this script is to display the year in the copyright authentication in the footer -->
+<script>
+  document.getElementById('current-year').textContent = new Date().getFullYear();
+</script>
+
+<script src="./darkMode.js"></script>
+<script src="progress_bar.js"></script>
+<script src="main.js"></script>
+
+<!-- added script for contact form  -->
+<script src="contact_us.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+<script src="profiledropdown.js"></script>
+
+<div class="gtranslate_wrapper"></div>
+<script>window.gtranslateSettings = {"default_language":"en","detect_browser_language":true,"wrapper_selector":".gtranslate_wrapper"}</script>
+<script src="https://cdn.gtranslate.net/widgets/latest/float.js" defer></script>
+<script src="script.js"></script>
+
+
+<style>
+  .back-to-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    background-color: #007bff;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: opacity 0.3s;
+    opacity: 0;
+    visibility: hidden;
+  }
+
+  .back-to-top.show {
+    opacity: 1;
+    visibility: visible;
+  }
+</style>
+
+<script>
+  const phoneInput = document.getElementById('phone');
+  const errorMessage = document.getElementById('error-message');
+
+  phoneInput.addEventListener('input', function () {
+      const value = phoneInput.value;
+      const digitsOnly = value.replace(/\D/g, '');
+      if (digitsOnly.length > 10) {
+
+          phoneInput.value = digitsOnly.slice(0, 10);
+          errorMessage.style.display = 'block';
+      } else {
+          errorMessage.style.display = 'none'; 
+      }
+  });
+</script>
+
+<script>
+  const backToTopButton = document.getElementById('back-to-top');
+
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 300) {
+      backToTopButton.classList.add('show');
+    } else {
+      backToTopButton.classList.remove('show');
+    }
+  });
+
+  backToTopButton.addEventListener('click', ()=>{
+    window.scrollTo({
+      top: 0,
+      behavior:'smooth'
+    });
+  });
+</script>
+
+
+
+ 

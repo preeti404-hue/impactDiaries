@@ -1,0 +1,436 @@
+/* Dark mode */
+
+/* Default light mode colors */
+:root {
+  --background-color: rgb(244, 237, 227);
+  --text-color: rgb(59, 59, 88);
+  --header-bg: lightgray;
+}
+
+h2 {
+  color: var(--text-color);
+}
+
+/* Dark mode colors */
+[data-theme="dark"] {
+  --background-color: #171717;
+  --text-color: #f2dede;
+  --header-bg: #1c1c1c;
+}
+
+p {
+  color: var(--text-color);
+}
+
+/* Body styles */
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: var(--background-color);
+  margin: 0;
+}
+
+/* Container */
+.container {
+  max-width: 600px;
+  margin: 0 auto;
+  background: white;
+  padding: 20px;
+  margin-top: 30px;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease, transform 0.2s; /* Added transition for container */
+}
+
+.container:hover {
+  transform: translateY(-5px); /* Slight upward movement on hover */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); /* Increased shadow on hover */
+}
+
+/* Form styles */
+.container p {
+  font-size: small;
+  margin: 0 60px;
+  color: #555;
+  font-family: 'Poppins';
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  color: #555;
+}
+
+/* Input styles */
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+textarea {
+  width: 100%;
+  padding: 15px; /* Increased padding */
+  border: 1px solid #939393; /* Updated border color */
+  border-radius: 8px; /* Increased border radius */
+  box-sizing: border-box;
+  font-size: 16px; /* Increased font size */
+  transition: border-color 0.3s; /* Added transition for interaction */
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="tel"]:focus,
+textarea:focus {
+  border-color: #ea5541; /* Change border color on focus */
+  outline: none; /* Remove default outline */
+}
+
+/* Textarea */
+textarea {
+  resize: vertical;
+}
+
+/* Button styles */
+button {
+  background-color: #ea5541; /* Updated button background color */
+  color: white;
+  padding: 15px 20px; /* Increased padding */
+  border: none;
+  border-radius: 8px; /* Increased border radius */
+  cursor: pointer;
+  width: 100%;
+  font-size: 18px; /* Increased font size */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Added shadow */
+  transition: background-color 0.3s, transform 0.2s; /* Added transition */
+}
+
+button:hover {
+  background-color: #d94a38; /* Slightly darker shade on hover */
+  transform: translateY(-1px); /* Lift effect on hover */
+}
+
+/* Message styling */
+.message {
+  color: #28a745;
+  text-align: center;
+  margin-top: 15px;
+}
+
+/* Import Montserrat font */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;400;700;900&display=swap');
+
+/* Global styles */
+* {
+  font-family: "Montserrat", sans-serif;
+  box-sizing: border-box; /* Added for better box model handling */
+  margin: 0; /* Reset margin */
+  padding: 0; /* Reset padding */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .nav-menu ul {
+      flex-direction: column;
+      gap: 10px;
+  }
+
+  .nav-menu ul li a {
+      text-align: center;
+      padding: 10px;
+      width: 100%; /* Ensures full-width for small screens */
+  }
+}
+
+.auth-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.auth-buttons .login-btn,
+.auth-buttons .signup-btn {
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 8px 15px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.auth-buttons .login-btn {
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
+
+.auth-buttons .signup-btn {
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
+
+.auth-buttons .login-btn:hover {
+  background-color: var(--background-color);
+}
+
+.auth-buttons .signup-btn:hover {
+  background-color: var(--background-color);
+}
+
+.toggle-mode {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.toggle-mode label {
+  font-size: 1rem;
+  color: var(--text-color);
+}
+
+input[type="checkbox"] {
+  transform: scale(1.2);
+}
+
+/* Navigation styling */
+.nav-links {
+  display: flex;
+  gap: 20px; /* Space between links */
+  margin-left: auto; /* Push links to the right */
+}
+
+nav a:hover {
+  background-color: rgb(195, 164, 218); /* Slightly increased hover opacity */
+}
+
+.active-page {
+  color: #EEC48B;
+  background: rgba(159, 159, 159, 0.2);
+}
+
+/* Dropdown button styles */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: var(--background-color);
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+/* Dark mode styling */
+body.dark {
+  background-color: var(--background-color);
+}
+
+body.dark h1,
+body.dark .support a {
+  color: var(--text-color);
+}
+
+/* Checkbox for theme switcher */
+.checkbox {
+  opacity: 0;
+  position: absolute;
+}
+
+.checkbox-label {
+  background-color: var(--background-color);
+  width: 50px;
+  height: 26px;
+  border-radius: 50px;
+  position: relative;
+  padding: 5px;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Form Popup */
+.form-popup {
+  display: none;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  border: 1px solid #888;
+  z-index: 9;
+  width: 300px;
+  padding: 20px;
+  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease; /* Added transition for popup */
+}
+
+.form-container h2 {
+  margin-bottom: 15px;
+  font-size: 24px;
+}
+
+.form-container input[type="email"],
+.form-container input[type="password"],
+.form-container input[type="text"] {
+  width: 100%;
+  padding: 15px; /* Increased padding */
+  margin: 5px 0 15px 0;
+  border: 1px solid #ccc;
+  border-radius: 8px; /* Increased border radius */
+  font-size: 16px; /* Increased font size */
+}
+
+/* Button styles */
+.form-container .btn {
+  background-color: #3be56b;
+  color: rgb(255, 255, 255);
+  padding: 15px; /* Increased padding */
+  margin: 5px;
+  width: 100%;
+  border: none;
+  border-radius: 8px; /* Increased border radius */
+  cursor: pointer;
+  font-size: 18px; /* Increased font size */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Added shadow */
+  transition: background-color 0.3s, transform 0.2s; /* Added transition */
+}
+
+.form-container .btn:hover {
+  background-color: #218838;
+  transform: translateY(-1px); /* Lift effect on hover */
+}
+
+.form-container .cancel {
+  background-color: #ec6371;
+}
+
+.form-container .cancel:hover {
+  background-color: #c82333;
+}
+
+/* Center icons styling */
+.center-icons {
+  display: flex; /* Enable flexbox */
+  justify-content: center; /* Center items horizontally */
+  align-items: center; /* Center items vertically */
+  flex-wrap: wrap; /* Allow items to wrap if necessary */
+  gap: 30px; /* Increased space between the icons */
+}
+
+.circle-icon {
+  display: flex; /* Use flexbox for centering */
+  align-items: center; /* Center the icon vertically */
+  justify-content: center; /* Center the icon horizontally */
+  width: 70px; /* Increased icon circle size */
+  height: 70px; /* Increased icon circle size */
+  border-radius: 50%; /* Circle shape */
+  background-color: #f0f0f0; /* Light gray background */
+  transition: background-color 0.3s, transform 0.3s; /* Added transitions */
+  cursor: pointer; /* Change cursor on hover */
+}
+
+.circle-icon:hover {
+  background-color: #e0e0e0; /* Change background color on hover */
+  transform: scale(1.15); /* Increase size more on hover */
+}
+
+.circle-icon img {
+  width: 60px; /* Increased icon size */
+  height: 60px; /* Increased icon size */
+  transition: transform 0.3s; /* Added transition for icon */
+}
+
+.circle-icon:hover img {
+  transform: translateY(-5px); /* Move icon up on hover */
+}
+
+/* Toggle icons for login and signup */
+.toggle-icon {
+  display: flex; /* Enable flexbox for positioning */
+  justify-content: center; /* Center the icon horizontally */
+  align-items: center; /* Center the icon vertically */
+  cursor: pointer; /* Change cursor on hover */
+  transition: transform 0.3s; /* Add transition for rotation */
+}
+
+.toggle-icon:hover {
+  transform: rotate(360deg); /* Rotate icon on hover */
+}
+.tags.social {
+    display: flex;
+    justify-content: center; /* Center the icons */
+   /* Space above icons */
+}
+
+.circle-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    width: 80px; /* Increased width */
+    height: 80px; /* Increased height */
+    margin: 10px; /* Space between icons */
+    transition: background-color 0.3s, transform 0.3s; /* Smooth transition */
+    color: #007bff; /* Icon color */
+}
+
+.circle-icon i {
+    font-size: 32px; /* Increased icon size */
+}
+
+.circle-icon:hover {
+    background-color: rgba(0, 123, 255, 0.1); /* Light background on hover */
+    transform: scale(1.1); /* Scale effect on hover */
+}
+
+.fade-in {
+  opacity: 0; /* Start invisible */
+  transform: translateY(20px); /* Start slightly lower */
+  animation: fadeIn 0.5s forwards; /* Animation details */
+}
+
+@keyframes fadeIn {
+  to {
+      opacity: 1; /* End fully visible */
+      transform: translateY(0); /* Move to original position */
+  }
+}
+
+/* Optional: Add a delay for a staggered effect */
+.fade-in:nth-child(1) {
+  animation-delay: 0.2s; /* Delay for the header */
+}
+.fade-in:nth-child(2) {
+  animation-delay: 0.4s; /* Delay for the paragraph */
+}
+
+
+.d-flex-gap {
+  display: flex;
+  gap: 15px; /* Space between buttons */
+  flex-wrap: wrap; /* Wrap items to the next line if necessary */
+  justify-content: center; /* Center the buttons horizontally */
+}
+
+.category-btn {
+  padding: 12px 20px; /* Padding for a better touch target */
+  background-color: #ec8791; /* Primary color from the palette */
+  color: #11080800; /* White text color */
+  border: 2px solid transparent; /* Transparent border for hover effect */
+  border-radius: 5px; /* Rounded corners */
+  transition: background-color 0.3s, color 0.3s, border-color 0.3s; /* Smooth transitions */
+  text-decoration: none; /* Remove underline */
+  font-size: 16px; /* Font size */
+}
+
+.category-btn:hover {
+  background-color:#ec8791; /* Darker shade on hover */
+  color: #060606; /* Keep text color white on hover */
+  border-color: #ec8791; /* Maintain the border color on hover */
+}

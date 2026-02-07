@@ -1,0 +1,1091 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Impact Diaries - Category</title>
+    <link rel="shortcut icon" type="image/x-icon" href="/images/favi.webp" />
+    <!--font awesome-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <!--swiper slider css-->
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+
+    <!--css-->
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"> -->
+    <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Playfair+Display:700|Raleway:500.700'>
+    <link rel="stylesheet" href="category.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="Scroll_and_progressbar.css">
+    
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+    </style>
+    <!-- Script for Navbar Toggle -->
+ <script>
+    function toggleMenu() {
+    const menu = document.getElementById('nav-menu');
+    menu.classList.toggle('active');
+}
+ </script>
+</head>
+
+<body>
+   <nav>
+    <div class="progress-container">
+        <div class="progress-bar" id="progress-bar"></div>
+      </div>
+
+    <!--header-->
+
+    <div class="layout-container" style="margin-bottom: 4rem;">
+
+        <header> 
+            <div class="logo" >
+                <a href="index.html">
+                  <h2>Impact Diaries</h2>
+                </a>
+            </div>
+
+            <div class="hamburger" id="hamburger" onclick="toggleHamburgerMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        <div class="nav-links1" id="navLinks">
+            <a href="index.html">Home</a>
+            <a href="blog.html">Leading Blog</a>
+            <a href="start_writing.html">Start Writing</a>
+            <a href="category.html">Categories</a>
+
+            <a href="contact_us.html">Contact Us</a>
+            <a href="give_feedback.html">Give Feedback</a>
+        </div>
+       
+      <div class="dropdown">
+        <!-- Profile Icon -->
+
+        <a href="javascript:void(0);" class="profile-link profile-icon" style="display: flex; align-items: center; text-decoration: none;" onclick="toggleMenu()">
+            <i class="fas fa-user-circle"></i>
+
+        </a>
+
+        <!-- Dropdown Menu -->
+        <ul class="dropdown-menu" id="profileMenu" style="display: none; position: absolute; z-index: 1;">
+            
+            <li><a href="#login" onclick="openForm('login')">Login</a></li>
+            <li><a href="#signup" onclick="openForm('signup')">Signup</a></li>
+        </ul>
+    </div>
+    <script>
+      function toggleMenu() {
+          const menu = document.getElementById('profileMenu');
+          menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
+      }
+  
+      // Close the dropdown if the user clicks outside of it
+      window.onclick = function(event) {
+          const menu = document.getElementById('profileMenu');
+          if (!event.target.matches('.profile-link img') && menu.style.display === 'block') {
+              menu.style.display = 'none';
+          }
+      }
+  </script>
+  
+   
+  
+      
+                <!-- Login Form -->
+                <div class="form-popup" id="loginForm">
+                  <form class="form-container" onsubmit="return validateLoginForm()" style="max-width: 400px; margin: auto;">
+                      <span class="close-icon" onclick="closeForm('login')">&times;</span>
+                      <h2 class="text-center">Login</h2>
+                      <div class="form-group">
+                          <label for="loginEmail"><b>Email</b></label>
+                          <input type="email" class="form-control" id="loginEmail" placeholder="Enter Email" name="email" required>
+                      </div>
+                      <div class="form-group position-relative">
+                          <label for="loginPsw"><b>Password</b></label>
+                          <input type="password" class="form-control" id="loginPsw" placeholder="Enter Password" name="psw" required minlength="6">
+                          <i class="bi bi-eye eye-icon" id="toggleLoginPassword" onclick="togglePasswordVisibility('loginPsw', 'toggleLoginPassword')"></i>
+                      </div>
+                      <div class="remember-me">
+                          <input type="checkbox" id="remember-me" />
+                          <label for="remember-me">Remember Me</label>
+                      </div>
+                      <div class="forgot">
+                          <a href="javascript:void(0);" onclick="openForgotPassword()">Forgot Password?</a>
+                      </div>
+                      <button type="submit" class="btn btn-secondary w-100 mb-3">LOGIN</button>
+                      <style>
+                          .btn:hover {
+                              transition: 0.5s ease;
+                          }
+                      </style>
+                      <!-- Google Login Button -->
+                      <button type="button" class="btn google-btn" onclick="window.location.href='https://accounts.google.com/v3/signin/identifier?authuser=0&continue=https%3A%2F%2Fmyaccount.google.com%2F&ec=GAlAwAE&hl=en_GB&service=accountsettings&flowName=GlifWebSignIn&flowEntry=AddSession&dsh=S1527110508%3A1729760212648495&ddm=0'">
+                          <img src="./assets/google_icon.webp" alt="Google Logo" class="google-logo">
+                          Sign in with Google</button>
+                      <button type="button" class="btn btn-secondary w-100" onclick="closeForm('login')">CLOSE</button>
+                      <!-- Link to Signup Page -->
+                      <div class="new">
+                          <p>Don't have an account? <a href="javascript:void(0);" onclick="openForm('signup')">Sign up
+                                  here</a></p>
+                      </div>
+                  </form>
+              </div>
+
+              <!-- Signup Form -->
+              <div class="form-popup" id="signupForm">
+                  <form class="form-container" onsubmit="return validateSignupForm()" style="max-width: 400px; margin: auto;">
+                      <span class="close-icon" onclick="closeForm('signup')">&times;</span>
+                      <h2 class="text-center">Signup</h2>
+                      <div class="form-group">
+                          <label for="name"><b>Full Name</b></label>
+                          <input type="text" class="form-control" id="name" placeholder="Enter Full Name" name="name" required>
+                      </div>
+                      <div class="form-group">
+                          <label for="signupEmail"><b>Email</b></label>
+                          <input type="email" class="form-control" id="signupEmail" placeholder="Enter Email" name="email" required>
+                      </div>
+                      <div class="form-group position-relative">
+                          <label for="signupPsw"><b>Password</b></label>
+                          <input type="password" class="form-control" id="signupPsw" placeholder="Enter Password" name="psw" required minlength="6">
+                          <i class="bi bi-eye eye-icon" id="toggleSignupPassword" onclick="togglePasswordVisibility('signupPsw', 'toggleSignupPassword')"></i>
+                      </div>
+                      <div class="form-group position-relative">
+                          <label for="confirmPsw"><b>Confirm Password</b></label>
+                          <input type="password" class="form-control" id="confirmPsw" placeholder="Confirm Password" name="confirmPsw" required minlength="6">
+                          <i class="bi bi-eye eye-icon" id="toggleConfirmPassword" onclick="togglePasswordVisibility('confirmPsw', 'toggleConfirmPassword')"></i>
+                      </div>
+                      <div class="remember-me">
+                          <input type="checkbox" id="remember-me" />
+                          <label for="remember-me">Remember Me</label>
+                      </div>
+                      <button type="submit" class="btn btn-primary w-100 mb-3">SIGNUP</button>
+                      <!-- Google Sign-In Button -->
+                      <button type="button" class="btn google-btn" onclick="window.location.href='https://accounts.google.com/v3/signin/identifier?authuser=0&continue=https%3A%2F%2Fmyaccount.google.com%2F&ec=GAlAwAE&hl=en_GB&service=accountsettings&flowName=GlifWebSignIn&flowEntry=AddSession&dsh=S1527110508%3A1729760212648495&ddm=0'">
+                          <img src="./assets/google_icon.webp" alt="Google Logo" class="google-logo">
+                          Sign in with Google</button>
+                      <button type="button" class="btn btn-secondary w-100" onclick="closeForm('signup')">CLOSE</button>
+                      <!-- Link to Login Page -->
+                      <div class="new">
+                          <p>Already have an account? <a href="javascript:void(0);" onclick="openForm('login')">Login
+                                  here</a></p>
+                      </div>
+                  </form>
+              </div>
+
+              <!-- Forgot Password Modal -->
+              <div id="forgot-password-modal" class="modal">
+                  <div class="form-container modal-content">
+                      <h2>Forgot Password</h2>
+                      <p>Please enter your email address to reset your password.</p>
+
+                      <label for="email">Email Address</label>
+                      <input type="email" id="email" placeholder="Enter your email" required />
+
+                      <button class="btn" onclick="submitForgotPassword()">Submit</button>
+                      <button class="btn cancel" onclick="closeForgotPasswordModal()">Cancel</button>
+                  </div>
+              </div>
+
+              <!-- Toggle Password Visibility Script -->
+              <script>
+                  function togglePasswordVisibility(passwordFieldId, iconId) {
+                      const passwordField = document.getElementById(passwordFieldId);
+                      const togglePassword = document.getElementById(iconId);
+                      if (passwordField.type === 'password') {
+                          passwordField.type = 'text';
+                          togglePassword.classList.remove('bi-eye');
+                          togglePassword.classList.add('bi-eye-slash');
+                      } else {
+                          passwordField.type = 'password';
+                          togglePassword.classList.remove('bi-eye-slash');
+                          togglePassword.classList.add('bi-eye');
+                      }
+                  }
+              </script>
+              <script>
+                  document.addEventListener("DOMContentLoaded", function () {
+                      const rememberMeCheckbox = document.getElementById("remember-me");
+                      const usernameInput = document.getElementById("username");
+
+                      // Load saved username if it exists
+                      if (localStorage.getItem("rememberedUsername")) {
+                          usernameInput.value = localStorage.getItem("rememberedUsername");
+                          rememberMeCheckbox.checked = true;
+                      }
+
+                      // When the form is submitted, save the username if "Remember Me" is checked
+                      document.querySelector(".sign-in-form").addEventListener("submit", function (e) {
+                          e.preventDefault(); // Prevent default form submission
+
+                          if (rememberMeCheckbox.checked) {
+                              localStorage.setItem("rememberedUsername", usernameInput.value);
+                          } else {
+                              localStorage.removeItem("rememberedUsername");
+                          }
+
+                          // Add form submission logic here
+                      });
+                  });
+              </script>
+
+
+  <!-- CSS Styles -->
+  
+                <!-- Styles -->
+                <style>
+                  .form-popup {
+                      .form-popup {
+                          display: none;
+                          /* Hidden by default */
+                          position: fixed;
+                          /* Stay in place */
+                          z-index: 9;
+                          /* Sit on top */
+                          left: 50%;
+                          top: 50%;
+                          transform: translate(-50%, -50%);
+                          /* Center the popup */
+                          width: 100%;
+                          max-width: 500px;
+                          /* Limit width */
+                          padding: 20px;
+                          background-color: white;
+                          box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.6);
+                          border-radius: 10px;
+                          box-sizing: border-box;
+                      }
+                  }
+                  
+                  .form-container h2 {
+                      margin-bottom: 20px;
+                      color: #333;
+                  }
+                  
+                  .form-group {
+                      margin-bottom: 15px;
+                  }
+                  
+                  .form-control {
+                      border-radius: 5px;
+                      padding: 10px;
+                      box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.1);
+                  }
+                  
+                  .btn {
+                      margin-top: 10px;
+                      border-radius: 5px;
+                  }
+                  
+                  .eye-icon {
+                      position: absolute;
+                      right: 15px;
+                      top: 38px;
+                      cursor: pointer;
+                      color: #007bff;
+                  }
+                  
+                  .close-icon {
+                      font-size: 24px;
+                      cursor: pointer;
+                      float: right;
+                  }
+                  
+                  .position-relative {
+                      position: relative;
+                  }
+                  
+                  .btn-primary:hover {
+                      background-color: #0056b3;
+                  }
+                  
+                  .btn-secondary:hover {
+                      background-color: #6c757d;
+                  }
+                  
+                  .scroll-to-top {
+                      background-color: #0066cc;
+                      /* Button color */
+                      color: white;
+                      /* Text color */
+                      border: none;
+                      /* No border */
+                      border-radius: 5px;
+                      /* Rounded corners */
+                      padding: 10px 15px;
+                      /* Padding for better appearance */
+                      cursor: pointer;
+                      /* Pointer cursor on hover */
+                      margin-top: 10px;
+                      /* Space between the paragraph and button */
+                  }
+                  
+                  .scroll-to-top:hover {
+                      background-color: #005bb5;
+                      /* Darker shade on hover */
+                  }
+              </style>
+
+<!-- Toggle Password Visibility Script -->
+<script>
+    function togglePasswordVisibility(passwordFieldId, iconId) {
+        const passwordField = document.getElementById(passwordFieldId);
+        const togglePassword = document.getElementById(iconId);
+        if (passwordField.type === 'password') {
+            passwordField.type = 'text';
+            togglePassword.classList.remove('bi-eye');
+            togglePassword.classList.add('bi-eye-slash');
+        } else {
+            passwordField.type = 'password';
+            togglePassword.classList.remove('bi-eye-slash');
+            togglePassword.classList.add('bi-eye');
+        }
+    }
+    function checkPasswordStrength() {
+    var strengthMeter = document.getElementById('passwordStrength');
+    var password = document.getElementById('signupPsw').value;
+    var strength = 0;
+
+    if (password.length >= 6) strength++;
+    if (password.match(/[a-z]+/)) strength++;
+    if (password.match(/[A-Z]+/)) strength++;
+    if (password.match(/[0-9]+/)) strength++;
+    if (password.match(/[\W]+/)) strength++;
+
+    switch (strength) {
+        case 0:
+        case 1:
+            strengthMeter.style.width = '20%';
+            strengthMeter.style.backgroundColor = 'red';
+            strengthMeter.textContent = 'Weak';
+            break;
+        case 2:
+            strengthMeter.style.width = '40%';
+            strengthMeter.style.backgroundColor = 'orange';
+            strengthMeter.textContent = 'Fair';
+            break;
+        case 3:
+            strengthMeter.style.width = '60%';
+            strengthMeter.style.backgroundColor = 'yellow';
+            strengthMeter.textContent = 'Good';
+            break;
+        case 4:
+            strengthMeter.style.width = '80%';
+            strengthMeter.style.backgroundColor = 'blue';
+            strengthMeter.textContent = 'Strong';
+            break;
+        case 5:
+            strengthMeter.style.width = '100%';
+            strengthMeter.style.backgroundColor = 'green';
+            strengthMeter.textContent = 'Very Strong';
+            break;
+    }
+}
+</script>
+
+
+<script src="signup.js"></script> <!-- Link to your JavaScript file -->
+
+
+
+        <div class="theme-switch-wrapper">
+            <label class="theme-switch" for="checkbox">
+                <input type="checkbox" id="checkbox">
+                <div class="slider">
+                    <img src="https://img.icons8.com/emoji/48/000000/sun-emoji.png" alt="Sun" class="icon sun-icon">
+                    <img src="https://img.icons8.com/emoji/48/000000/crescent-moon-emoji.png" alt="Moon" class="icon moon-icon">
+                </div>
+            </label>
+            <span id="mode-label"></span>
+        </div>
+        
+        </header>
+    </div>
+   </nav>
+    <!--header-->
+
+
+    <main style="margin-top: 8rem;">
+        <section class="category-container">
+            <div class="category-row">
+                <div class="new-category-box">
+                    <div class="new-post-list">
+                        <article class="new-post-item">
+                            <div class="new-post-thumbnail">
+                                <img src="https://img.freepik.com/premium-photo/flavorful-masala-octopus-curry-cooked-traditional-indian-pot_1106454-25571.jpg" alt="Post Image">
+                                <span class="s1"></span>
+                                <span class="s2"></span>
+                            </div>
+                            <div >
+                            <div class="new-post-content">
+                                <div class="new-post-data">
+                                    <h2 class="new-category-title">Food</h2>
+                                    <h3 class="new-post-title">Mouthwatering Memoirs</h3>
+                                    <p class="new-post-excerpt">Mouth watering tales from all over the world...</p>
+                                </div>
+                            </div>
+                                <ul class="section-btn">
+                                    <li>
+                                        <a href="food.html"><span data-hover="Read More">Read More</span></a>
+                                    </li>
+                                </ul>
+                                
+                            </div>
+                        </article>
+                    </div>
+                </div>
+
+                <div class="new-category-box">
+                    <div class="new-post-list">
+                        <article class="new-post-item">
+                            <div class="new-post-thumbnail">
+                                <img src="https://global-uploads.webflow.com/5ca5fe687e34be0992df1fbe/639abf0c915ba06c97a03c59_TREKKING%20MOUNTAIN%20AH22%20COL%20DES%20ARAVIS%20-%20001%20---%20Expires%20on%2014-04-2027.jpg" alt="Post Image">
+                                <span class="s1"></span>
+                                <span class="s2"></span>
+                            </div>
+                            <div class="new-post-content">
+                                <div class="new-post-data">
+                                    <h2 class="new-category-title">Travel</h2>
+                                    <h3 class="new-post-title">Roaming Routes</h3>
+                                    <p class="new-post-excerpt">In the realm of mechanical marvels.</p>
+                                    
+                                        
+                                </div>
+                                
+                                <ul class="section-btn">
+                                    <li>
+                                        <a href="travel.html"><span data-hover="Read More">Read More</span></a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </article>
+                    </div>
+                
+                </div>
+                
+                    
+                
+
+                <div class="new-category-box">
+                    <div class="new-post-list">
+                        <article class="new-post-item">
+                            <div class="new-post-thumbnail">
+                                <img src="https://th.bing.com/th/id/OIP.5ncZMYBcfIS0t4ANcnpbrwHaHa?w=522&h=522&rs=1&pid=ImgDetMain" alt="Post Image">
+                                <span class="s1"></span>
+                                <span class="s2"></span>
+                            </div>
+                            <div class="new-post-content">
+                                <div class="new-post-data">
+                                    <h2 class="new-category-title">Technology</h2>
+                                    <h3 class="new-post-title">The Future of Tech</h3>
+                                    <p class="new-post-excerpt">Exploring the innovations that are changing the world.</p>
+                                </div>
+                                <ul class="section-btn">
+                                    <li>
+                                        <a href="tech.html"><span data-hover="Read More">Read More</span></a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+
+                <div class="new-category-box">
+                    <div class="new-post-list">
+                        <article class="new-post-item">
+                            <div class="new-post-thumbnail">
+                                <img src="https://i.pinimg.com/originals/fe/cf/da/fecfdad6c91516ad4dd20ae57de639cd.jpg" alt="Post Image">
+                                <span class="s1"></span>
+                                <span class="s2"></span>
+                            </div>
+                            <div class="new-post-content">
+                                <div class="new-post-data">
+                                    <h2 class="new-category-title">Lifestyle</h2>
+                                    <h3 class="new-post-title">Living Well</h3>
+                                    <p class="new-post-excerpt">Tips and tricks for a balanced life.</p>
+                                </div>
+                                <ul class="section-btn">
+                                    <li>
+                                        <a href="life.html"><span data-hover="Read More">Read More</span></a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+
+                <div class="new-category-box">
+                    <div class="new-post-list">
+                        <article class="new-post-item">
+                            <div class="new-post-thumbnail">
+                                <img src="https://mcm.edu/app/uploads/2022/05/AdobeStock_93394779-scaled.jpeg" alt="Post Image">
+                                <span class="s1"></span>
+                                <span class="s2"></span>
+                            </div>
+                            <div class="new-post-content">
+                                <div class="new-post-data">
+                                    <h2 class="new-category-title">Health</h2>
+                                    <h3 class="new-post-title">Health Tips</h3>
+                                    <p class="new-post-excerpt">Best practices for a healthier you.</p>
+                                </div>
+                                <ul class="section-btn">
+                                    <li>
+                                        <a href="health.html"><span data-hover="Read More">Read More</span></a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+
+                <div class="new-category-box">
+                    <div class="new-post-list">
+                        <article class="new-post-item">
+                            <div class="new-post-thumbnail">
+                                <img src="https://images.pexels.com/photos/1926769/pexels-photo-1926769.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260" alt="Post Image">
+                                <span class="s1"></span>
+                                <span class="s2"></span>
+                            </div>
+                            <div class="new-post-content">
+                                <div class="new-post-data">
+                                    <h2 class="new-category-title">Fashion</h2>
+                                    <h3 class="new-post-title">Fashion Trends</h3>
+                                    <p class="new-post-excerpt">Stay stylish with the latest trends.</p>
+                                </div>
+                                <ul class="section-btn">
+                                    <li>
+                                        <a href="fashion.html"><span data-hover="Read More">Read More</span></a>
+                                    </li>
+                                </ul>
+                                <!-- <button  class="new-read-more-link"><a href="fashion.html">Read More</a></button> -->
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </section>
+    
+    <div class="sliderr">
+        <div class="slides">
+            <!-- Radio buttons for navigation -->
+            <input type="radio" name="radio-btn" id="radio1" checked>
+            <input type="radio" name="radio-btn" id="radio2">
+            <input type="radio" name="radio-btn" id="radio3">
+            <input type="radio" name="radio-btn" id="radio4">
+            <input type="radio" name="radio-btn" id="radio5">
+            <input type="radio" name="radio-btn" id="radio6">
+
+            <!-- Slide images -->
+            <div class="slide first">
+                <img src="https://lailaroohifaisaldesigns.com/cdn/shop/collections/0F4A6135.jpg?v=1672925043" alt="Slide 1">
+            </div>
+            <div class="slide">
+                <img src="https://global-uploads.webflow.com/5ca5fe687e34be0992df1fbe/639abf0c915ba06c97a03c59_TREKKING%20MOUNTAIN%20AH22%20COL%20DES%20ARAVIS%20-%20001%20---%20Expires%20on%2014-04-2027.jpg" alt="Slide 2">
+            </div>
+            <div class="slide">
+                <img src="https://images.pexels.com/photos/3184195/pexels-photo-3184195.jpeg?cs=srgb&dl=group-of-people-eating-together-3184195.jpg&fm=jpg" alt="Slide 3">
+            </div>
+            <div class="slide">
+                <img src="https://img.grouponcdn.com/seocms/37R5CmAiW5aTSrUBAxuNrN3wUJwf/hero_lowerquality_FEATURE_50STATES_031120_MW_jpg-1600x960" alt="Slide 4">
+            </div>
+            <div class="slide">
+                <img src="https://th.bing.com/th/id/R.46eb6d1c0c1c05b0e4bea73782db5b59?rik=9wqgYhf0SEREdw&riu=http%3a%2f%2fstatic1.squarespace.com%2fstatic%2f5c6a987c0cf57dde01887628%2f5c6a9bd69140b77a89d62153%2f60897b71f318a602de4f9fba%2f1634503218853%2fIMG_7507.jpg%3fformat%3d1500w&ehk=ZXnl5a44WPBlCi7XYGPQope3wLzGDxado%2fh2iEB7eS0%3d&risl=&pid=ImgRaw&r=0" alt="Slide 5">
+            </div>
+            <div class="slide">
+                <img src="./assets/slider/img6.webp" alt="Slide 6">
+            </div>
+
+            <!-- Automatic navigation -->
+            <div class="navigation-auto">
+                <div class="auto-btn1"></div>
+                <div class="auto-btn2"></div>
+                <div class="auto-btn3"></div>
+                <div class="auto-btn4"></div>
+                <div class="auto-btn5"></div>
+                <div class="auto-btn6"></div>
+            </div>
+        </div>
+
+        <!-- Manual navigation -->
+        <div class="navigation-manual">
+            <label for="radio1" class="manual-btn"></label>
+            <label for="radio2" class="manual-btn"></label>
+            <label for="radio3" class="manual-btn"></label>
+            <label for="radio4" class="manual-btn"></label>
+            <label for="radio5" class="manual-btn"></label>
+            <label for="radio6" class="manual-btn"></label>
+        </div>
+        <!-- Prev and Next buttons -->
+        <button id="prevSlide" class="slider-btn prev">&#10094;</button>
+        <button id="nextSlide" class="slider-btn next">&#10095;</button>
+    </div>
+    
+    <!-- Swiper end -->
+    </main>
+
+    <!-- <button id="backToTop">⬆️</button> -->
+    <div id="backToTop" title="Back to Top">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+    <!-- footer -->
+
+    <footer id="footer">
+        <div class="footer-container">
+            <div class="row mb-3 col-3-main">
+                <div class="col-3">
+                   <div id = "about-us">
+                    <h2 class="footer-title secondary-title" >About Us</h2>
+  
+                      <div class="secondary-title text-secondary " >
+                         <p class="mt-2 text-lg" style="text-align: left;" >
+                          We are a close-knit team of passionate storytellers dedicated to sharing captivating content with the world.
+                         </p>
+  
+                         <address class="mt-2">
+                             <i class="fas fa-map-marker-alt text-primary"></i>
+                             Chitkara University,Himachal Pradesh
+                         </address>
+  
+                         <div class="phone mt-2">
+                             <i class="fas fa-mobile text-primary"></i>
+                             +91-8950491196
+                         </div>
+  
+                        <div class="email mt-2">
+                              <a href="mailto: preeti1390.be23@chitkarauniversity.edu.in" style="color: 3B3B58;"><i class="fas fa-envelope text-primary"></i>
+                             <span id="mailhover">preeti1390.be23@chitkarauniversity.edu.in</span>
+                             <style>
+                              #mailhover:hover{
+                                  color: #f44336;
+                                  transition: color 0.5s ease-out;
+                              }
+                             </style>
+                          </a>
+                         </div>
+  
+                         <div>
+                          <!-- <img src="https://hits.sh/anshika-26.github.io/WordWise.svg?label=Website%20Views&extraCount=1515&color=30322f&labelColor=F5B3B5" alt="Web views" style="height: 20px;width: 150px;margin-top: 40px;"> -->
+                          <div class="containerWebsiteViews">
+                            <div class="containerText"><p>Website Views</p></div>
+                            <div class="containerNumbers"><p id="visitorCount">0</p></div>
+                          </div>
+                         </div>
+                      </div>
+  
+                   </div>
+                </div>
+                <div class="col-3">
+                    <h2 class="footer-title secondary-title">Feature Post</h2>
+  
+                    <div class="feature-post">
+                        <div class="flex-item">
+                          <article class="article">
+                              <div class="d-flex" style="align-items: flex-start; ">
+                                  <a class="d-flex" href="#">
+                                      <img src="https://th.bing.com/th/id/OIP.E4IJcali_762Oo_vNhhbFgHaEK?w=277&h=180&c=7&r=0&o=5&pid=1.7" class="object-fit" alt="">
+                                      <div class="px-1" style="width: 300px; ">
+                                          <a href="#" class="text-title display-2 text-dark">
+                                              Embrace the beauty of nature through our enchanting blog, where we celebrate the wonders of the natural world
+                                          </a>
+                                          <p class="secondary-title text-secondary " style="margin-top:3px;margin-left:0px; text-align: left; ">
+                                              <span><i class="far fa-clock text-primary"></i> Wed 02, 2022 </span>
+                                          </p>
+                                      </div>
+                                  </a>
+                              </div>
+                          </article>
+  
+                        </div>
+                        <div class="flex-item">
+                         <article class="article">
+                             <div class="d-flex" style="align-items: flex-start; ">
+                                 <a class="d-flex" href="#">
+                                     <img src="https://stlpolished.com/wp-content/uploads/2017/02/Highway.jpg" class="object-fit" alt="">
+                                     <div class="px-1" style="width: 300px;">
+                                         <a href="#" class="text-title display-2 text-dark">
+                                          Embark on unforgettable journeys through our travel blog, where wanderlust meets inspiration
+                                         </a>
+                                         <p class="secondary-title text-secondary display-3" style="margin-top:3px;margin-left:0px; text-align: left;">
+                                              <span><i class="far fa-clock text-primary"></i> Wed 05, 2020 </span>
+                                         </p>
+                                     </div>
+                                 </a>
+                             </div>
+                         </article>
+                          </div>
+                          <div class="flex-item">
+                             <article class="article">
+                                 <div class="d-flex" style="align-items: flex-start; ">
+                                     <a class="d-flex " href="#" >
+                                         <img src="https://th.bing.com/th/id/OIP.Dquq8xoJl3G5XCrmFYsDJQHaE7?w=242&h=180&c=7&r=0&o=5&pid=1.7" class="object-fit" alt="">
+                                         <div class="px-1" style="width: 300px;">
+                                             <a href="#" class="text-title display-2 text-dark">
+                                              Gaming Adventures Unleashed
+                                             </a>
+                                             <p class="secondary-title text-secondary display-3" style="margin-top:3px;margin-left:0px; text-align: left;">
+                                                  <span><i class="far fa-clock text-primary"></i> Wed 02, 2021 </span>
+                                             </p>
+                                         </div>
+                                     </a>
+                                 </div>
+                             </article>
+                         </div>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <h2 class="footer-title secondary-title">Popular Tags</h2>
+                    <div class="tags">
+                      <div class="d-flex-gap flex-wrap all-tags">
+                        <a href="./blog.html" class="nav-link btn category-btn">Travel</a>
+                        <a href="./blog.html" class="nav-link btn category-btn">Food</a>
+                        <a href="./blog.html" class="nav-link btn category-btn">Lifestyle</a>
+                        <a href="./blog.html" class="nav-link btn category-btn">Technology</a>
+                        <a href="./blog.html" class="nav-link btn category-btn">Fashion</a>
+                    </div>
+                    
+                    </div>
+                    <h2 class="footer-title secondary-title mt-5">Connect with us</h2>
+                    <div class="tags social" id="contact">
+                        <div class="d-flex-gap flex-wrap">
+                            <a href="https://www.facebook.com/" id="facebook" class="nav-link btn bg-light">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                            <a href="https://x.com/" id="twitter" class="nav-link btn bg-light">
+                                <i class="fa-brands fa-x-twitter"></i>
+                            </a>
+                            <a href="https://www.instagram.com/" id="instagram" class="nav-link btn bg-light">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            <a href="https://dribbble.com/" id="dribbble" class="nav-link btn bg-light">
+                                <i class="fab fa-dribbble"></i>
+                            </a>
+                            <a href="https://github.com/ANSHIKA-26?tab=overview&from=2022-12-01&to=2022-12-31" id="github" target="_blank"
+                               class="nav-link btn bg-light">
+                                <i class="fab fa-github"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+  
+  
+        </div>
+         <!-- the authentication copyright -->
+         <div class="wordwise-footer">
+          <div class="wordwise-footer-content">
+            <p class="last">&copy; <span id="current-year"></span> Impact Diaries. All rights reserved.</p>
+          </div>
+      </div>
+    </footer>
+
+    <!-- .footer -->
+     <!-- this script is to display the year in the copyright authentication in the footer -->
+    <script>
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+    </script>
+
+    <script src= "main.js"></script>
+    <script src= "./darkMode.js"></script>
+    <script src= "progress_bar.js"></script>
+
+    <script src= "https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script src= "https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src= "https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+    <script src= "profiledropdown.js"></script>
+
+    <style>
+        /* ... existing styles ... */
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.4);
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 600px;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+        }
+    </style>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var modal = document.getElementById("faqModal");
+            var btn = document.getElementById("faqButton");
+            var span = document.getElementsByClassName("close")[0];
+
+            btn.addEventListener('click', function() {
+                modal.style.display = "block";
+            });
+
+            span.addEventListener('click', function() {
+                modal.style.display = "none";
+            });
+
+            window.addEventListener('click', function(event) {
+                if (event.target == modal) {
+                    modal.style.display = "none";
+                }
+            });
+
+            // Update the current year
+            document.getElementById('current-year').textContent = new Date().getFullYear();
+        });
+    </script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const checkbox = document.querySelector('input[type="checkbox"]');
+            const modeLabel = document.getElementById('mode-label');
+
+            // Check localStorage for saved mode
+            const savedMode = localStorage.getItem('darkMode');
+            if (savedMode === 'dark') {
+                document.body.classList.add('dark-mode');
+                checkbox.checked = true;
+                modeLabel.textContent = '';
+            } else {
+                modeLabel.textContent = '';
+            }
+
+            checkbox.addEventListener('change', function() {
+                if (this.checked) {
+                    document.body.classList.add('dark-mode');
+                    localStorage.setItem('darkMode', 'dark');
+                    modeLabel.textContent = '';
+                } else {
+                    document.body.classList.remove('dark-mode');
+                    localStorage.setItem('darkMode', 'light');
+                    modeLabel.textContent = '';
+                }
+            });
+
+            // ... existing FAQ modal code ...
+        });
+    </script>
+     <script>
+        document.addEventListener('DOMContentLoaded', function () {
+    const slides = document.querySelector('.slides');
+    const radioButtons = document.querySelectorAll('input[name="radio-btn"]');
+    const labels = document.querySelectorAll('.manual-btn');
+    const prevButton = document.getElementById('prevSlide');
+    const nextButton = document.getElementById('nextSlide');
+    let currentSlide = 0;
+
+    function showSlide(index) {
+        slides.style.transform = `translateX(-${index * 16.67}%)`;
+        radioButtons[index].checked = true;
+        updateActiveLabel(index);
+    }
+
+    function updateActiveLabel(index) {
+        labels.forEach((label, i) => {
+            if (i === index) {
+                label.classList.add('active');
+            } else {
+                label.classList.remove('active');
+            }
+        });
+    }
+
+    function nextSlide() {
+        currentSlide = (currentSlide + 1) % radioButtons.length;
+        showSlide(currentSlide);
+    }
+    function prevSlide() {
+        currentSlide = (currentSlide - 1 + radioButtons.length) % radioButtons.length;
+        showSlide(currentSlide);
+    }
+
+    // Add click event listeners to radio buttons
+    radioButtons.forEach((radio, index) => {
+        radio.addEventListener('click', () => {
+            currentSlide = index;
+            showSlide(currentSlide);
+        });
+    });
+
+     // Add click event listeners to Prev and Next buttons
+     prevButton.addEventListener('click', prevSlide);
+     nextButton.addEventListener('click', nextSlide);
+
+    // Show first slide initially
+    showSlide(0);
+
+    // Automatic slide change
+    setInterval(nextSlide, 5000);
+});
+
+     </script>
+
+<div class="gtranslate_wrapper"></div>
+<script>window.gtranslateSettings = {"default_language":"en","detect_browser_language":true,"wrapper_selector":".gtranslate_wrapper"}</script>
+<script src="https://cdn.gtranslate.net/widgets/latest/float.js" defer></script>
+<script src="script.js"></script>
+<script>
+    Vue.config.devtools = true;
+
+Vue.component('card', {
+  template: `
+    <div class="card-wrap"
+      @mousemove="handleMouseMove"
+      @mouseenter="handleMouseEnter"
+      @mouseleave="handleMouseLeave"
+      ref="card">
+      <div class="card"
+        :style="cardStyle">
+        <div class="card-bg" :style="[cardBgTransform, cardBgImage]"></div>
+        <div class="card-info">
+          <slot name="header"></slot>
+          <slot name="content"></slot>
+        </div>
+      </div>
+    </div>`,
+  mounted() {
+    this.width = this.$refs.card.offsetWidth;
+    this.height = this.$refs.card.offsetHeight;
+  },
+  props: ['dataImage'],
+  data: () => ({
+    width: 0,
+    height: 0,
+    mouseX: 0,
+    mouseY: 0,
+    mouseLeaveDelay: null }),
+
+  computed: {
+    mousePX() {
+      return this.mouseX / this.width;
+    },
+    mousePY() {
+      return this.mouseY / this.height;
+    },
+    cardStyle() {
+      const rX = this.mousePX * 30;
+      const rY = this.mousePY * -30;
+      return {
+        transform: `rotateY(${rX}deg) rotateX(${rY}deg)` };
+
+    },
+    cardBgTransform() {
+      const tX = this.mousePX * -40;
+      const tY = this.mousePY * -40;
+      return {
+        transform: `translateX(${tX}px) translateY(${tY}px)` };
+
+    },
+    cardBgImage() {
+      return {
+        backgroundImage: `url(${this.dataImage})` };
+
+    } },
+
+  methods: {
+    handleMouseMove(e) {
+      this.mouseX = e.pageX - this.$refs.card.offsetLeft - this.width / 2;
+      this.mouseY = e.pageY - this.$refs.card.offsetTop - this.height / 2;
+    },
+    handleMouseEnter() {
+      clearTimeout(this.mouseLeaveDelay);
+    },
+    handleMouseLeave() {
+      this.mouseLeaveDelay = setTimeout(() => {
+        this.mouseX = 0;
+        this.mouseY = 0;
+      }, 1000);
+    } } });
+
+
+
+const app = new Vue({
+  el: '#app' });
+</script>
+
+  <style>
+        body{
+    scroll-behavior: smooth;
+  }
+    .back-to-top {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: 50px;
+      height: 50px;
+      background-color: #007bff;
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      transition: opacity 0.3s;
+      opacity: 0;
+      visibility: hidden;
+    }
+
+    .back-to-top.show {
+      opacity: 1;
+      visibility: visible;
+    }
+  </style>
+
+  <script>
+    const backToTopButton = document.getElementById('back-to-top');
+
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 300) {
+        backToTopButton.classList.add('show');
+      } else {
+        backToTopButton.classList.remove('show');
+      }
+    });
+
+    backToTopButton.addEventListener('click', ()=>{
+      window.scrollTo({
+        top: 0,
+        behavior:'smooth'
+      });
+    });
+  </script>
+
+
+</body>
+
+</html>
